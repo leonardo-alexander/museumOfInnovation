@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museum of Innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .improved-text-block {
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: #333;
+        position: relative;
+        overflow: visible;
+      }
+
+      .improved-text-block a:not(.nav-link) {
+        position: relative;
+        display: inline-block;
+        font-weight: 600;
+        color: #007bff;
+        text-decoration: none;
+        border-bottom: 2px dotted #007bff;
+        transition: color 0.2s, border-bottom 0.2s;
+        cursor: pointer;
+      }
+
+      .improved-text-block a:hover:not(.nav-link) {
+        color: #0056b3;
+        border-bottom-style: solid;
+      }
+
+      .preview-box {
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: 260px;
+        background: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 9999;
+        padding: 0.5rem;
+        pointer-events: none;
+      }
+
+      .preview-box img {
+        display: block;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 0.5rem;
+      }
+
+      .preview-box .caption {
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: #333;
+        padding: 0 0.25rem 0.25rem;
+      }
+
+      a:hover .preview-box {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .nav-link {
+        position: relative;
+        padding-bottom: 4px;
+        transition: color 0.3s ease, transform 0.2s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background-color: currentColor;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-link span {
+        position: absolute;
+        left: 50%;
+        top: 130%;
+        transform: translateX(-50%) translateY(5px);
+        background-color: rgba(0, 0, 0, 0.75);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .nav-link:hover span {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .nav-link.active {
+        color: #3730a3;
+        font-weight: 700;
+        border-bottom: 3px solid #3730a3;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <div
+      class="max-w-4xl mx-auto bg-white shadow-2xl p-6 sm:p-10 mt-6 mb-8 rounded-xl border-t-8 border-indigo-700"
+    >
+      <nav
+        class="flex justify-center space-x-6 py-4 border-b-2 border-indigo-100 mb-8"
+      >
+        <a
+          href="#craft-age"
+          class="nav-link text-red-600 hover:text-red-800 text-sm"
+        >
+          Age of Craftsmanship
+          <span>Handcrafted tools and early mechanical ingenuity</span>
+        </a>
+        <a
+          href="#industrial-age"
+          class="nav-link text-red-600 hover:text-red-800 text-sm"
+        >
+          Industrial Age
+          <span>The rise of factories and mechanized production</span>
+        </a>
+        <a
+          href="#age-of-steam"
+          class="nav-link text-red-600 hover:text-red-800 text-sm"
+        >
+          Age of Steam
+          <span>Steam engines drive transport and industry</span>
+        </a>
+        <a
+          href="#steam-and-steel"
+          class="nav-link text-indigo-700 font-bold text-sm active"
+        >
+          Age of Steam and Steel
+          <span>Industrial power and the dawn of modern cities</span>
+        </a>
+      </nav>
+
+      <header class="mb-10 p-4 bg-indigo-50 rounded-lg">
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold text-indigo-800 tracking-tight leading-snug text-center"
+        >
+          Museum of Innovation
+        </h1>
+        <h2
+          class="text-xl sm:text-2xl font-light text-gray-600 tracking-wide text-center mt-1"
+        >
+          The Age of Steam and Steel (1850 - 1920)
+        </h2>
+      </header>
+
+      <div class="improved-text-block space-y-8">
+        <p>
+          A crucial period of technological growth occurred between the years
+          1850 and 1920. This era saw the perfection of the
+          <a href="#def-bessemer">
+            Bessemer Process
+            <span class="preview-box">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Bessemer_converter.jpg/500px-Bessemer_converter.jpg"
+                alt="Bessemer Converter"
+              />
+              <span class="caption"
+                ><strong>Bessemer Process:</strong> A revolutionary steel
+                production method that enabled mass production by blowing air
+                through molten iron to remove impurities.</span
+              >
+            </span>
+          </a>
+          which finally made large-scale steel production inexpensive and
+          efficient. Before this advancement, iron was the primary building
+          material, but steel’s greater strength-to-weight ratio allowed for the
+          construction of taller structures and more powerful machines. The
+          Bessemer process involved blowing air through molten pig iron to
+          remove impurities, and it revolutionized manufacturing on a global
+          scale.
+        </p>
+
+        <p>
+          This industrial momentum also led to major innovations in
+          transportation.
+          <a href="#video-trains" class="link-video">
+            Watch a video on early train models
+            <span class="preview-box">
+              <img
+                src="https://i.ytimg.com/vi/9mhYnQGZJuM/maxresdefault.jpg"
+                alt="Steam train"
+              />
+              <span class="caption"
+                >Early steam trains transformed travel and commerce, connecting
+                distant regions faster than ever before.</span
+              >
+            </span>
+          </a>
+          The expansion of railways linked cities and nations, enabling trade,
+          migration, and cultural exchange on an unprecedented scale. The use of
+          coal as a primary fuel source powered these engines, driving factories
+          and vehicles alike—but it also created a heavy environmental toll,
+          filling industrial cities with smoke and soot.
+        </p>
+
+        <p>
+          It is important to remember that all this progress was built on the
+          backs of a growing industrial
+          <a href="#def-labor">
+            labor force
+            <span class="preview-box">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh6q58O88gXWwwSXS3eZuEkuKroaxZorrOyQ&s"
+                alt="Child labor in factory"
+              />
+              <span class="caption"
+                >Factory laborers, including children, endured long working
+                hours and unsafe conditions to fuel industrial progress.</span
+              >
+            </span>
+          </a>
+          and their families. Workers often toiled twelve-hour shifts in
+          dangerous factories with poor ventilation and minimal pay. Industrial
+          accidents were common, and child labor became a widespread issue of
+          the era.
+          <a href="#conditions-page" class="link-page font-bold text-red-600">
+            Explore the section on factory conditions
+            <span class="preview-box">
+              <img
+                src="https://i0.wp.com/heritagecalling.com/wp-content/uploads/2020/11/cc68_00040-mill-workers-attending-a-machine.jpg?ssl=1"
+                alt="Cotton mill workers"
+              />
+              <span class="caption"
+                >Inside crowded cotton mills, workers toiled in heat and noise —
+                a glimpse into the human cost of progress.</span
+              >
+            </span>
+          </a>
+          to learn more about the daily realities faced by the working class
+          during this time.
+        </p>
+
+        <p>
+          This immense industrial output transformed global economies, creating
+          the foundation of the modern industrial world. However, the rapid pace
+          of change often masked deep social inequalities. The relentless
+          pursuit of efficiency prioritized machinery and output over human
+          welfare, leading to long working hours, dangerous conditions, and
+          widening gaps between classes. Meanwhile, the shift from rural
+          communities to crowded urban centers placed enormous strain on public
+          services such as housing, sanitation, and healthcare.
+        </p>
+
+        <p>
+          The final technological leap of the period was the widespread adoption
+          of electricity, moving industry beyond steam power.
+          <a href="#gallery-lights" class="link-image">
+            View images of the first electric lights
+            <span class="preview-box">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTACiBMJQOc-UdsM2a42uy9NWaFW3A4pkTT2Q&s"
+                alt="Edison bulb"
+              />
+              <span class="caption"
+                >Thomas Edison’s incandescent bulbs lit cities, signaling a
+                revolutionary shift to electric power.</span
+              >
+            </span>
+          </a>
+          The introduction of electric lighting, motors, and streetcars
+          redefined modern life, bringing greater safety, productivity, and
+          accessibility to city streets and homes. While the internal combustion
+          engine was still in its infancy, electricity paved the way for the
+          next century of innovation, powering the industries, transportation
+          systems, and technologies that would shape the modern world.
+        </p>
+      </div>
+
+      <footer
+        class="mt-10 pt-4 border-t-2 border-indigo-100 text-center text-sm text-gray-500"
+      >
+        <p>&copy; Museum of Innovation 2025. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
